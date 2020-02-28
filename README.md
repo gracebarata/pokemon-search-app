@@ -1,3 +1,62 @@
+POKEMON SEARCH APP
+PLAN
+
+// Behaviours:
+// When searching for Pokemon, I want to see a list of options which match what I’m typing.
+// When clicking on an item from the options list, we expect to select that Pokemon for the search field
+// When clicking the search button, show the selected pokemon’s profile
+
+# Plan So Far
+
+- PokeSuggest
+  - SearchBar
+    - SearchField
+    - SearchButton
+  - AutoComplete
+    - OptionsList
+    - Option
+  - PokemonDisplay
+    - PokemonImage
+    - PokemonInfo
+
+What do we want to track? - what is typed into the search field (searchTerm) - the list of options (options) - the pokemon we want to show (result)
+
+How do each of these things interact with our components?
+What do they need to be seen by? What do they need to be changed /edited by?
+
+    - searchTerm
+      - needs to be seen by search bar > search field, autocomplete > options list
+      - needs to be edited by options > option, search bar > search field
+        - options needs to be able to set the searchTerm when clicking an option
+        - search field needs to be able to set the searchTerm when typing in to the input
+      - lives in PokeSuggest
+
+     - options
+      - needs to be seen by autocomplete > options list
+      - is dependent on searchTerm
+      - lives in AutoComplete
+    - result
+      - needs to be seen by pokemon display
+      - needs to be edited by search bar > search button
+        - when you click the button, need to be able to set result to be searchTerm
+      - lives in PokeSuggest
+
+Pokemon <- API
+Pokemon -> options, result
+searchTerm dictates
+fetch -> when the searchTerm changes > autocomplete = options
+Autocomple prop includes searchTerm
+useEffect(
+() => ...
+, [searchTerm])
+fetch -> click the button = result
+
+    -
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
